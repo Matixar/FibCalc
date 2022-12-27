@@ -1,0 +1,8 @@
+version: '3.4'
+
+services:
+  fibcalc:
+    image: fibcalc
+    build:
+      context: .
+      dockerfile: ./Dockerfile

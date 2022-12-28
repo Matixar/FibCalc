@@ -1,4 +1,4 @@
-FROM alpine
+FROM alpine:3
 
 RUN apk update && apk upgrade
 
@@ -13,5 +13,3 @@ RUN --mount=type=ssh git clone git@github.com:Matixar/FibCalc.git .
 RUN g++ -o FibCalc src/main.cpp
 
 CMD ["./FibCalc"]
-
-LABEL Name=fibcalc Version=0.0.1

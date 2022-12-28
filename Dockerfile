@@ -1,4 +1,3 @@
-# syntax=docker/dockerfile:experimental
 FROM alpine:3.17
 
 RUN apk --update add g++

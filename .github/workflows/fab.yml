@@ -51,7 +51,7 @@ jobs:
         with:
           cache-from: type=registry,ref=docker.io/matixar/fibcalc:buildcache
           cache-to: type=registry,ref=docker.io/matixar/fibcalc:buildcache
-          platforms: linux/amd64,linux/arm64,windows/amd64,darwin 
+          platforms: linux/amd64,linux/arm64,darwin 
           context: ./
           push: true
           tags: ${{steps.meta.outputs.tags}}

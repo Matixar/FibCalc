@@ -1,0 +1,17 @@
+#tworzenie środowiska do kompilacji programu
+FROM ubuntu-20.04 as build-env
+USER root
+ARG TARGETOS TARGETARCH
+RUN apk add --update docker openrc
+WORKDIR /usr/src/FibCalc
+COPY . .
+RUN /bin/sh -c "dockerd"
+RUN /bin/sh -c "docker run --rm dockcross/$TARGETARCH > ./dockcross-$TARGETARCH"
+RUN /bin/sh -c "chmod +x ./dockcross-$TARGETARCH"
+CMD ["./dockcross-$TARGETARCH", "gcc", "-o", "FibCalc", "src/main.cpp", "-lstdc++"]
+
+#uruchomienie programu
+FROM $TARGETOS:latest
+COPY --from=build-env /usr/src/FibCalc /usr/src/FibCalc
+WORKDIR /usr/src/FibCalc
+CMD ["./FibCalc"]

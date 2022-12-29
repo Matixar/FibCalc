@@ -8,5 +8,6 @@ RUN g++ -o FibCalc src/main.cpp
 #uruchomienie programu
 FROM alpine:3.17
 COPY --from=build-env /usr/src/FibCalc /usr/src/FibCalc
+COPY --from=build-env /usr/lib /usr/lib
 WORKDIR /usr/src/FibCalc
 CMD ["./FibCalc"]
